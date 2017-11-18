@@ -1,0 +1,57 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@model CA.BusinessLogic.Contact
+@{
+    ViewBag.Title = "Code Authority";
+}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<div id="formContainer">
+    <h2> Contact Us</h2>
+    <form id="CAContactForm" method="post">
+        <div class="row">
+            <div class="col-sm-10">
+                @Html.TextBoxFor(x => x.FirstName, new { placeholder = "Enter First Name", @class = "ca-form-input" })
+                @Html.ValidationMessageFor(x => x.FirstName)
+             </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                @Html.TextBoxFor(x => x.LastName, new { placeholder = "Enter Last Name", @class = "ca-form-input" })
+                @Html.ValidationMessageFor(x => x.LastName)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                @Html.TextBoxFor(x => x.EmailAddress, new { placeholder = "Enter Email Address", @class = "ca-form-input" })
+                @Html.ValidationMessageFor(x => x.EmailAddress)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                @Html.TextBoxFor(x => x.PhoneNumber, new { placeholder = "Enter Phone Number", @class = "ca-form-input" })
+                @Html.ValidationMessageFor(x => x.PhoneNumber)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                @Html.TextBoxFor(x => x.BesTimeToCall, new { id = "datetimepicker1", placeholder = "Select the Best Time to Call", @class = "ca-form-input" })
+                @Html.ValidationMessageFor(x => x.BesTimeToCall)
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                @Html.Captcha(7)
+                @ViewBag.CaptchaErrorMessage
+                
+            </div>
+
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-3 ">
+                <input type="submit" value="Contact Me" class="ca-form-input" />
+            </div>
+        </div>
+</form>
+</div>
